@@ -48,6 +48,8 @@ class HanoiGame {
             let key = Keyboard.keyPressed();
 
         }
+        do Output.moveCursor(1,1);
+        do Output.printString("From: ");
         do Output.printChar(key);
 
         if (key = 81) {
@@ -70,6 +72,10 @@ class HanoiGame {
         while (key = 0) {
             let key = Keyboard.keyPressed();
         }
+
+        do Output.moveCursor(1,1);
+        do Output.printString("To: ");
+        do Output.printChar(key);
 
 
         if (key = 81) {
