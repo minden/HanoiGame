@@ -48,9 +48,9 @@ class HanoiGame {
             let key = Keyboard.keyPressed();
 
         }
-        do Output.moveCursor(1,1);
-        do Output.printString("From: ");
-        do Output.printChar(key);
+        //do Output.moveCursor(1,1);
+        //do Output.printString("From: ");
+        //do Output.printChar(key);
 
         if (key = 81) {
             let exit = true;
@@ -73,9 +73,9 @@ class HanoiGame {
             let key = Keyboard.keyPressed();
         }
 
-        do Output.moveCursor(1,1);
-        do Output.printString("To: ");
-        do Output.printChar(key);
+        //do Output.moveCursor(1,1);
+        //do Output.printString("To: ");
+        //do Output.printChar(key);
 
 
         if (key = 81) {
@@ -104,13 +104,29 @@ class HanoiGame {
 
     method void switchplate (int popTower, int pushTower){
       var int popedPlate;
-      if (popTower = 1) {let popedPlate =  tower1.pop();}
-      if (popTower = 2) {let popedPlate =  tower2.pop();}
-      if (popTower = 3) {let popedPlate =  tower3.pop();}
+      var Tower popTowerName;
+      var Tower pushTowerName;
+      var int popTowerHeight;
+      var int pushTowerHeight;
 
-      if (pushTower = 1) {do tower1.push(popedPlate);}
-      if (pushTower = 2) {do tower2.push(popedPlate);}
-      if (pushTower = 3) {do tower3.push(popedPlate);}
+      if (popTower = 1) {let popTowerName = tower1;}
+      if (popTower = 2) {let popTowerName = tower2;}
+      if (popTower = 3) {let popTowerName = tower3;}
+
+      if (pushTower = 1) {let pushTowerName = tower1;}
+      if (pushTower = 2) {let pushTowerName = tower2;}
+      if (pushTower = 3) {let pushTowerName = tower3;}
+
+      let popTowerHeight = popTowerName.peek();
+      let pushTowerHeight = pushTowerName.peek();
+
+
+
+
+      if (popTowerHeight < pushTowerHeight){
+        let popedPlate =  popTowerName.pop();
+        do pushTowerName.push(popedPlate);
+      }
 
       do refreshScreen();
 

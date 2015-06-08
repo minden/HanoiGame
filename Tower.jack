@@ -26,9 +26,6 @@ class Tower {
       let i = i+1;
     }
 
-
-
-
     return;
   }
 
@@ -60,6 +57,18 @@ class Tower {
   method void dispose() {
     do Memory.deAlloc(this);
     return;
+  }
+
+  method int peek() {
+    //do Output.printInt(height);
+
+    if(height > 0){
+      return plates[height-1];
+    }
+    else {
+      return 100;
+    }
+
   }
 
 }
