@@ -7,13 +7,15 @@ class Tower {
   constructor Tower new(int iX, boolean first) {
     let x = iX;
     let plates = Array.new(4);
-    let height = -1;
+    let height = 0;
     do draw();
     return this;
   }
 
   method void draw() {
     var int i;
+
+    do Screen.clearScreen();
 
     do Screen.setColor(true);
     do Screen.drawRectangle(x, 50, x + 10, 255);
@@ -33,7 +35,7 @@ class Tower {
 
   method boolean push(int input) {
     if (height < 4) {
-      let plates[height+1] = input;
+      let plates[height] = input;
       if (height < 3) {let height = height +1;}
       do draw();
       return true;
@@ -42,6 +44,18 @@ class Tower {
       return false;
     }
   }
+
+  method int pop(){
+    var int output;
+    if(height > 0){
+      let output = plates[height];
+      let plates[height] = 0;
+      do draw();
+    }
+    return output;
+  }
+
+
 
   method void dispose() {
     do Memory.deAlloc(this);
