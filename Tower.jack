@@ -1,17 +1,41 @@
 class Tower {
 
   field int x;
+  field Array plates;
+  field int height;
 
   constructor Tower new(int iX, boolean first) {
     let x = iX;
+    let plates = Array.new(4);
+    let height = -1;
     do draw();
     return this;
   }
 
   method void draw() {
+    var int i;
+
     do Screen.setColor(true);
     do Screen.drawRectangle(x, 50, x + 10, 255);
+
+    let i = 0;
+
+    while (i < 3) {
+      do Screen.drawRectangle(x-(plates[i]*10), (4-i)*50, x+plates[i]+10, (4 -i)*50+10);
+      let i = i+1;
+    }
+
+
+
+
     return;
+  }
+
+  method boolean push(int input) {
+    let plates[height+1] = input;
+    let height = height +1;
+    do draw();
+    return true;
   }
 
   method void dispose() {

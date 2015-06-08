@@ -9,6 +9,12 @@ class HanoiGame {
     let tower1 = Tower.new(125, true);
     let tower2 = Tower.new(250, true);
     let tower3 = Tower.new(375, true);
+
+    do tower1.push(4);
+    do tower1.push(3);
+    do tower1.push(2);
+    do tower1.push(1);
+
     return this;
   }
 
