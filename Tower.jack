@@ -1,0 +1,22 @@
+class Tower {
+
+  field int x;
+
+  constructor Tower new(int iX, boolean first) {
+    let x = iX;
+    do draw();
+    return this;
+  }
+
+  method void draw() {
+    do Screen.setColor(true);
+    do Screen.drawRectangle(x, 50, x + 10, 255);
+    return;
+  }
+
+  method void dispose() {
+    do Memory.deAlloc(this);
+    return;
+  }
+
+}

@@ -6,10 +6,9 @@ class HanoiGame {
   field Tower tower3;
 
   constructor HanoiGame new() {
-    let tower1 = Tower.new();
-    let tower2 = Tower.new();
-    let tower3 = Tower.new();
-
+    let tower1 = Tower.new(125, true);
+    let tower2 = Tower.new(250, true);
+    let tower3 = Tower.new(375, true);
     return this;
   }
 
@@ -17,5 +16,14 @@ class HanoiGame {
     do tower1.dispose();
     do tower2.dispose();
     do tower3.dispose();
+    do Memory.deAlloc(this);
+    return;
   }
+
+  method void run() {
+    return;
+  }
+
+
+
 }
