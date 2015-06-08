@@ -20,8 +20,8 @@ class Tower {
 
     let i = 0;
 
-    while (i < 3) {
-      do Screen.drawRectangle(x-(plates[i]*10), (4-i)*50, x+plates[i]+10, (4 -i)*50+10);
+    while (i < 4) {
+      do Screen.drawRectangle(x-(plates[i]*10), (4-i)*60, x+plates[i]+10, (4 -i)*60+10);
       let i = i+1;
     }
 
@@ -32,10 +32,15 @@ class Tower {
   }
 
   method boolean push(int input) {
-    let plates[height+1] = input;
-    let height = height +1;
-    do draw();
-    return true;
+    if (height < 4) {
+      let plates[height+1] = input;
+      if (height < 3) {let height = height +1;}
+      do draw();
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
   method void dispose() {
