@@ -1,0 +1,21 @@
+class HanoiGame {
+
+  //The towers
+  field Tower tower1;
+  field Tower tower2;
+  field Tower tower3;
+
+  constructor HanoiGame new() {
+    let tower1 = Tower.new();
+    let tower2 = Tower.new();
+    let tower3 = Tower.new();
+
+    return this;
+  }
+
+  method void dispose() {
+    do tower1.dispose();
+    do tower2.dispose();
+    do tower3.dispose();
+  }
+}
