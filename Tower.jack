@@ -15,7 +15,6 @@ class Tower {
   method void draw() {
     var int i;
 
-    do Screen.clearScreen();
 
     do Screen.setColor(true);
     do Screen.drawRectangle(x, 50, x + 10, 255);
@@ -36,7 +35,7 @@ class Tower {
   method boolean push(int input) {
     if (height < 4) {
       let plates[height] = input;
-      if (height < 3) {let height = height +1;}
+      let height = height +1;
       do draw();
       return true;
     }
@@ -48,8 +47,9 @@ class Tower {
   method int pop(){
     var int output;
     if(height > 0){
-      let output = plates[height];
-      let plates[height] = 0;
+      let output = plates[height-1];
+      let plates[height-1] = 0;
+      let height = height -1;
       do draw();
     }
     return output;

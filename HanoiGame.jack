@@ -18,6 +18,14 @@ class HanoiGame {
     return this;
   }
 
+  method void refreshScreen(){
+    do Screen.clearScreen();
+    do tower1.draw();
+    do tower2.draw();
+    do tower3.draw();
+    return;
+  }
+
   method void dispose() {
     do tower1.dispose();
     do tower2.dispose();
@@ -27,9 +35,83 @@ class HanoiGame {
   }
 
   method void run() {
-    return;
-  }
+    var char key;
+    var boolean exit;
+    var int popTower;
+    var int pushTower;
+    let exit = false;
 
+    while (~exit) {
+
+
+        while (key = 0) {
+            let key = Keyboard.keyPressed();
+
+        }
+        do Output.printChar(key);
+
+        if (key = 81) {
+            let exit = true;
+        }
+        if (key = 49) {
+            let popTower = 1;
+        }
+        if (key = 50) {
+            let popTower = 2;
+        }
+        if (key = 51) {
+            let popTower = 3;
+        }
+
+        while (~(key = 0)) {
+            let key = Keyboard.keyPressed();
+        }
+
+        while (key = 0) {
+            let key = Keyboard.keyPressed();
+        }
+
+
+        if (key = 81) {
+            let exit = true;
+        }
+        if (key = 49) {
+            let pushTower = 1;
+        }
+        if (key = 50) {
+            let pushTower = 2;
+        }
+        if (key = 51) {
+            let pushTower = 3;
+        }
+
+        // waits for the key to be released.
+        while (~(key = 0)) {
+            let key = Keyboard.keyPressed();
+        }
+        do switchplate(popTower, pushTower);
+      }
+
+      return;
+    }
+
+
+    method void switchplate (int popTower, int pushTower){
+      var int popedPlate;
+      if (popTower = 1) {let popedPlate =  tower1.pop();}
+      if (popTower = 2) {let popedPlate =  tower2.pop();}
+      if (popTower = 3) {let popedPlate =  tower3.pop();}
+
+      if (pushTower = 1) {do tower1.push(popedPlate);}
+      if (pushTower = 2) {do tower2.push(popedPlate);}
+      if (pushTower = 3) {do tower3.push(popedPlate);}
+
+      do refreshScreen();
+
+
+      return;
+
+    }
 
 
 }
