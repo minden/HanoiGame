@@ -3,9 +3,17 @@ class Main {
     /** Initializes a new game and starts it. */
     function void main() {
         var HanoiGame game;
+        var int result;
 
-        let game = HanoiGame.new();
-        do game.run();
+        while (true){
+          do Screen.clearScreen();
+          do Output.moveCursor(1,30);
+          do Output.printString("Tower of Hanoi");
+
+          let game = HanoiGame.new();
+          let result = game.run();
+        }
+
         do game.dispose();
 
         return;

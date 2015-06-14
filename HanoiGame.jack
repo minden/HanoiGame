@@ -33,6 +33,7 @@ class HanoiGame {
     var boolean exit;
     var int popTower;
     var int pushTower;
+    var int counter;
     let exit = false;
 
     while (~exit) {
@@ -43,10 +44,10 @@ class HanoiGame {
 
         }
         do Screen.setColor(false);
-        do Screen.drawRectangle(0, 0, 50, 35);
+        do Screen.drawRectangle(0, 10, 50, 55);
         do Screen.setColor(true);
 
-        do Output.moveCursor(1,1);
+        do Output.moveCursor(3,1);
         do Output.printString("From: ");
         do Output.printChar(key);
 
@@ -71,9 +72,14 @@ class HanoiGame {
             let key = Keyboard.keyPressed();
         }
 
-        do Output.moveCursor(2,1);
+        do Output.moveCursor(4,1);
         do Output.printString("To: ");
         do Output.printChar(key);
+
+        let counter = counter + 1;
+        do Output.moveCursor(21,1);
+        do Output.printString("Counter: ");
+        do Output.printInt(counter);
 
 
         if (key = 81) {
@@ -94,6 +100,16 @@ class HanoiGame {
             let key = Keyboard.keyPressed();
         }
         do switchplate(popTower, pushTower);
+        if (tower2.finished()){
+          do finishScreen(counter);
+          let exit = true;
+
+        }
+        if (tower3.finished()){
+          do finishScreen(counter);
+          let exit = true;
+
+        }
       }
 
       return;
@@ -125,22 +141,45 @@ class HanoiGame {
       }
       else {
         if(popTowerHeight = 100) {
-          do Output.moveCursor(4,1);
+          do Output.moveCursor(6,1);
           do Output.printInt(popTower);
           do Output.printString(" is empty!");
         }
         else {
-          do Output.moveCursor(4,1);
+          do Output.moveCursor(6,1);
           do Output.printString("The plate on: ");
           do Output.printInt(popTower);
-          do Output.moveCursor(5,1);
+          do Output.moveCursor(7,1);
           do Output.printString("is bigger then");
-          do Output.moveCursor(6,1);
+          do Output.moveCursor(8,1);
           do Output.printString("the plate on: ");
           do Output.printInt(pushTower);
         }
       }
 
+
+      return;
+
+    }
+
+    method void finishScreen(int counter){
+
+      var char key;
+
+      do Screen.clearScreen();
+      do Output.moveCursor(10,20);
+      do Output.printString("Wow, you made it in ");
+      do Output.printInt(counter);
+      do Output.printString(" steps!!!");
+
+      do Output.moveCursor(15,25);
+      do Output.printString("Press any key to restart.");
+
+      while (key = 0) {
+          let key = Keyboard.keyPressed();
+      }
+
+      do Sys.wait(300);
 
       return;
 
