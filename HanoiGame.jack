@@ -43,7 +43,7 @@ class HanoiGame {
 
         }
         do Screen.setColor(false);
-        do Screen.drawRectangle(0, 0, 50, 50);
+        do Screen.drawRectangle(0, 0, 50, 35);
         do Screen.setColor(true);
 
         do Output.moveCursor(1,1);
@@ -119,25 +119,27 @@ class HanoiGame {
       let pushTowerHeight = pushTowerName.peek();
 
 
-
-
       if (popTowerHeight < pushTowerHeight){
         let popedPlate =  popTowerName.pop();
         do pushTowerName.push(popedPlate);
       }
       else {
-        do Output.moveCursor(4,1);
-        do Output.printString("The plate on: ");
-        do Output.printInt(popTower);
-        do Output.moveCursor(5,1);
-        do Output.printString("is bigger then");
-        do Output.moveCursor(6,1);
-        do Output.printString("the plate on: ");
-        do Output.printInt(pushTower);
-
+        if(popTowerHeight = 100) {
+          do Output.moveCursor(4,1);
+          do Output.printInt(popTower);
+          do Output.printString(" is empty!");
+        }
+        else {
+          do Output.moveCursor(4,1);
+          do Output.printString("The plate on: ");
+          do Output.printInt(popTower);
+          do Output.moveCursor(5,1);
+          do Output.printString("is bigger then");
+          do Output.moveCursor(6,1);
+          do Output.printString("the plate on: ");
+          do Output.printInt(pushTower);
+        }
       }
-
-      //do refreshScreen();
 
 
       return;
