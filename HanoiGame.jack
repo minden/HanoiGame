@@ -6,9 +6,9 @@ class HanoiGame {
   field Tower tower3;
 
   constructor HanoiGame new() {
-    let tower1 = Tower.new(125, true);
-    let tower2 = Tower.new(250, true);
-    let tower3 = Tower.new(375, true);
+    let tower1 = Tower.new(175, true);
+    let tower2 = Tower.new(300, true);
+    let tower3 = Tower.new(425, true);
 
     do tower1.push(4);
     do tower1.push(3);
@@ -18,13 +18,7 @@ class HanoiGame {
     return this;
   }
 
-  method void refreshScreen(){
-    do Screen.clearScreen();
-    do tower1.draw();
-    do tower2.draw();
-    do tower3.draw();
-    return;
-  }
+
 
   method void dispose() {
     do tower1.dispose();
@@ -48,6 +42,10 @@ class HanoiGame {
             let key = Keyboard.keyPressed();
 
         }
+        do Screen.setColor(false);
+        do Screen.drawRectangle(0, 0, 50, 50);
+        do Screen.setColor(true);
+
         do Output.moveCursor(1,1);
         do Output.printString("From: ");
         do Output.printChar(key);
@@ -127,8 +125,19 @@ class HanoiGame {
         let popedPlate =  popTowerName.pop();
         do pushTowerName.push(popedPlate);
       }
+      else {
+        do Output.moveCursor(4,1);
+        do Output.printString("The plate on: ");
+        do Output.printInt(popTower);
+        do Output.moveCursor(5,1);
+        do Output.printString("is bigger then");
+        do Output.moveCursor(6,1);
+        do Output.printString("the plate on: ");
+        do Output.printInt(pushTower);
 
-      do refreshScreen();
+      }
+
+      //do refreshScreen();
 
 
       return;

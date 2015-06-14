@@ -15,6 +15,9 @@ class Tower {
   method void draw() {
     var int i;
 
+    do Screen.setColor(false);
+    do Screen.drawRectangle(x-40, 50, x+40, 255);
+
 
     do Screen.setColor(true);
     do Screen.drawRectangle(x, 50, x + 10, 255);
