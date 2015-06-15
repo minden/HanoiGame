@@ -69,8 +69,6 @@ class Tower {
   }
 
   method int peek() {
-    //do Output.printInt(height);
-
     if(height > 0){
       return plates[height-1];
     }

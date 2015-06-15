@@ -18,8 +18,6 @@ class HanoiGame {
     return this;
   }
 
-
-
   method void dispose() {
     do tower1.dispose();
     do tower2.dispose();
@@ -43,22 +41,24 @@ class HanoiGame {
     do Output.moveCursor(1,25);
     do Output.printString("Tower of Hanoi");
 
+    do Screen.drawLine(0,45, 511, 45);
+    do Screen.drawLine(120,45, 120, 255);
+
     do tower1.draw();
     do tower2.draw();
     do tower3.draw();
 
     while (~exit) {
 
-
         while (key = 0) {
             let key = Keyboard.keyPressed();
 
         }
         do Screen.setColor(false);
-        do Screen.drawRectangle(0, 10, 50, 55);
+        do Screen.drawRectangle(0, 46, 60, 80);
         do Screen.setColor(true);
 
-        do Output.moveCursor(3,1);
+        do Output.moveCursor(5,1);
         do Output.printString("From: ");
         do Output.printChar(key);
 
@@ -83,7 +83,7 @@ class HanoiGame {
             let key = Keyboard.keyPressed();
         }
 
-        do Output.moveCursor(4,1);
+        do Output.moveCursor(6 ,1);
         do Output.printString("To: ");
         do Output.printChar(key);
 
@@ -157,13 +157,15 @@ class HanoiGame {
           do Output.printString(" is empty!");
         }
         else {
-          do Output.moveCursor(6,1);
-          do Output.printString("The plate on: ");
-          do Output.printInt(popTower);
-          do Output.moveCursor(7,1);
-          do Output.printString("is bigger then");
           do Output.moveCursor(8,1);
+          do Output.printString("Plate on: ");
+          do Output.moveCursor(9,1);
+          do Output.printInt(popTower);
+          do Output.moveCursor(10,1);
+          do Output.printString("is bigger then");
+          do Output.moveCursor(11,1);
           do Output.printString("the plate on: ");
+          do Output.moveCursor(12,1);
           do Output.printInt(pushTower);
         }
       }
@@ -205,16 +207,16 @@ class HanoiGame {
       do Output.printString("First choose the tower you want to move the plate away from");
       do Output.moveCursor(9,0);
       do Output.printString("by pressing a number between 1-3.");
-      do Output.moveCursor(10, 0);
+      do Output.moveCursor(11, 0);
       do Output.printString("Then choose the destination tower");
-      do Output.moveCursor(11,0);
-      do Output.printString("by pressing a number between 1-3");
       do Output.moveCursor(12,0);
+      do Output.printString("by pressing a number between 1-3.");
+      do Output.moveCursor(14,0);
       do Output.printString("The goal is to build the exact same stack") ;
-      do Output.moveCursor(13,0);
+      do Output.moveCursor(15,0);
       do Output.printString("as you see on tower 1 on tower 2 or 3.");
 
-      let i = 10;
+      let i = 9;
 
       while (i>0){
         do Output.moveCursor (20,30);
@@ -232,9 +234,27 @@ class HanoiGame {
 
       do Screen.clearScreen();
       do Output.moveCursor(10,15);
-      do Output.printString("Wow, you made it in ");
-      do Output.printInt(counter);
-      do Output.printString(" steps!!!");
+
+      if(counter = 15){
+        do Output.printString("You ROCK! You made it in ");
+        do Output.printInt(counter);
+        do Output.printString(" steps!");
+        do Output.moveCursor(11,15);
+        do Output.printString(" That is the smallest amount possible!");
+      }
+
+      if(counter < 20 & counter > 15){
+        do Output.printString("Wow, you made it in ");
+        do Output.printInt(counter);
+        do Output.printString(" steps!!!");
+      }
+
+      if(counter > 19){
+        do Output.printString("Come on,  ");
+        do Output.printInt(counter);
+        do Output.printString(" steps? You can do better!");
+      }
+
 
       do Output.moveCursor(15,20);
       do Output.printString("Press any key to restart.");
@@ -248,6 +268,5 @@ class HanoiGame {
       return;
 
     }
-
 
 }
