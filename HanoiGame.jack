@@ -36,24 +36,14 @@ class HanoiGame {
 
     do startScreen();
     do introductionScreen();
-
-    do Screen.clearScreen();
-    do Output.moveCursor(1,25);
-    do Output.printString("Tower of Hanoi");
-
-    do Screen.drawLine(0,45, 511, 45);
-    do Screen.drawLine(120,45, 120, 255);
-
-    do tower1.draw();
-    do tower2.draw();
-    do tower3.draw();
+    do initialGameScreen();
 
     while (~exit) {
 
         while (key = 0) {
             let key = Keyboard.keyPressed();
-
         }
+
         do Screen.setColor(false);
         do Screen.drawRectangle(0, 46, 60, 80);
         do Screen.setColor(true);
@@ -134,7 +124,7 @@ class HanoiGame {
       return true;
     }
 
-
+    //Switches a plate from one tower to another
     method void switchplate (int popTower, int pushTower){
       var int popedPlate;
       var Tower popTowerName;
@@ -179,11 +169,11 @@ class HanoiGame {
         }
       }
 
-
       return;
 
     }
 
+    //Shows the plate that is about to be moved on top of the towers
     method void bufferPlate(int plateSize){
 
         do Screen.drawRectangle(300-(plateSize*10), 60, 300+(plateSize*10)+10, 70);
@@ -194,7 +184,6 @@ class HanoiGame {
         do Sys.wait(125);
 
         return;
-
     }
 
     method void startScreen(){
@@ -211,7 +200,6 @@ class HanoiGame {
         let i = i-1;
       }
 
-
       return;
     }
 
@@ -221,7 +209,6 @@ class HanoiGame {
       do Screen.clearScreen();
       do Output.moveCursor(1,25);
       do Output.printString("Tower of Hanoi");
-
 
       do Output.moveCursor(6,0);
       do Output.printString("How to play:");
@@ -237,6 +224,8 @@ class HanoiGame {
       do Output.printString("The goal is to build the exact same stack") ;
       do Output.moveCursor(15,0);
       do Output.printString("as you see on tower 1 on tower 2 or 3.");
+      do Output.moveCursor(17,0);
+      do Output.printString("Watch out: You can only put a smaller plate onto a bigger plate!");
 
       let i = 9;
 
@@ -246,6 +235,21 @@ class HanoiGame {
         do Sys.wait(1000);
         let i = i-1;
       }
+
+      return;
+    }
+
+    method void initialGameScreen(){
+      do Screen.clearScreen();
+      do Output.moveCursor(1,25);
+      do Output.printString("Tower of Hanoi");
+
+      do Screen.drawLine(0,45, 511, 45);
+      do Screen.drawLine(120,45, 120, 255);
+
+      do tower1.draw();
+      do tower2.draw();
+      do tower3.draw();
 
       return;
     }
@@ -279,7 +283,6 @@ class HanoiGame {
         do Output.printInt(counter);
         do Output.printString(" steps? You can do better!");
       }
-
 
       do Output.moveCursor(20,5);
       do Output.printString("Press r to restart the game or esc to leave the game.");

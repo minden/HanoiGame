@@ -7,7 +7,6 @@ class Main {
 
         let exit = false;
 
-
         while (~exit){
 
           let game = HanoiGame.new();
