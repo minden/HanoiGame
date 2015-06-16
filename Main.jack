@@ -2,13 +2,20 @@ class Main {
 
     function void main() {
         var HanoiGame game;
-        var int result;
+        var boolean result;
+        var boolean exit;
 
-        while (true){
+        let exit = false;
+
+
+        while (~exit){
 
           let game = HanoiGame.new();
           let result = game.run();
           do game.dispose();
+          if (~result){
+            let exit = true;
+          }
         }
         return;
     }
