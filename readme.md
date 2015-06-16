@@ -1,6 +1,6 @@
 # Tower of Hanoi
 
-written in the Jack programming language
+Written in the Jack programming language.
 
 Please use the JackCompiler to compile the .jack files to .vm files.
 
