@@ -308,7 +308,7 @@ class HanoiGame {
       do Screen.clearScreen();
       do Output.moveCursor(15,20);
       do Output.printString("Good bye! See you next time!");
-      do Sys.halt(3000);
+      do Sys.wait(3000);
       return;
 
     }

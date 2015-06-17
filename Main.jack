@@ -16,6 +16,7 @@ class Main {
             let exit = true;
           }
         }
+        do Sys.halt();
         return;
     }
 }
